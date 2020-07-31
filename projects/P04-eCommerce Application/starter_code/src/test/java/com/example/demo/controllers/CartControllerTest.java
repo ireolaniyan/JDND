@@ -22,7 +22,6 @@ import static org.mockito.Mockito.when;
 
 public class CartControllerTest {
     private CartController cartController;
-    private UserController userController;
 
     private UserRepository userRepo = mock(UserRepository.class);
     private CartRepository cartRepo = mock(CartRepository.class);
