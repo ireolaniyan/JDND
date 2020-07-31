@@ -60,6 +60,16 @@ public class Item {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Item{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", price=" + price +
+				", description='" + description + '\'' +
+				'}';
+	}
+
 	public Long getId() {
 		return id;
 	}

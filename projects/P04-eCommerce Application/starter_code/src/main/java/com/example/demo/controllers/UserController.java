@@ -50,8 +50,14 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
 		User user = new User();
 		user.setUsername(createUserRequest.getUsername());
+
+		log.info("Username was set to " + createUserRequest.getUsername());
+
 		Cart cart = new Cart();
 		cartRepository.save(cart);
+
+		if (log.isDebugEnabled()) log.debug("Cart for " + user.getUsername() + " was saved to the repository.");
+
 		user.setCart(cart);
 
 		// Add user authentication
@@ -62,7 +68,12 @@ public class UserController {
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 
+		if (log.isDebugEnabled()) log.debug("Password encrypted for " + user.getUsername());
+
 		userRepository.save(user);
+
+		log.info("User " + user.getUsername() + " successfully saved to the database.");
+
 		return ResponseEntity.ok(user);
 	}
 	
