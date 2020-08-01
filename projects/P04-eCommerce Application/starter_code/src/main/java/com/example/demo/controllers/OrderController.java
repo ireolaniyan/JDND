@@ -53,7 +53,7 @@ public class OrderController {
 			log.error("Username not found: " + username);
 			return ResponseEntity.notFound().build();
 		}
-		System.out.println("hello");
+
 		return ResponseEntity.ok(orderRepository.findByUser(user));
 	}
 }
